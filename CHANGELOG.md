@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.17.1 — 2026-10-13
+- **gptaku-core 라우팅 적용.** `gptaku-core`를 의존성으로 선언하고 `routing.json`을 추가해, 이 플러그인 스킬에 맞는 요청이 오면 직접 처리하거나 기본 도구를 쓰기 전에 이 스킬을 먼저 쓰게 했다. 기존 사용자는 업데이트 후 `/reload-plugins`를 실행하거나 플러그인을 다시 설치해야 gptaku-core가 함께 설치된다. 끄기: `GPTAKU_ROUTER=off`.
+- 스킬 설명에서 "단순 검색은 WebSearch로" 같은 양보 문구를 빼고, WebSearch·WebFetch보다 먼저 쓰는 스킬로 다시 썼다.
+
 ## 0.17.0 — 2026-10-08
 
 - **X 장문 트윗·X 아티클을 잘리지 않은 전문으로 수집 — FxTwitter 조건부 폴백.** tweet-result·oEmbed는 장문을 약 280자에서 자르고 아티클은 t.co 링크만 주면서 잘림 표시도 없었다. 이제 tweet-result JSON에 `note_tweet`·`article` 키, 270자 이상, t.co 링크만 있는 본문 중 하나라도 보이면 `api.fxtwitter.com`을 추가로 불러 전문을 받는다(`route: fxtwitter`, 아티클은 제목+블록 본문). 짧은 트윗은 호출하지 않는다.
