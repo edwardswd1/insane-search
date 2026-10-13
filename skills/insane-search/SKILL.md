@@ -1,20 +1,19 @@
 ---
 name: insane-search
 description: >
-  Adaptive access for blocked websites — tries every method until one works.
-  Use when WebFetch returns 402/403/blocked, or when accessing X/Twitter, Reddit,
-  YouTube, GitHub, Mastodon, Medium, Substack, Stack Overflow, Threads, Naver,
-  Coupang, LinkedIn, or any platform with WAF/bot protection. Leverages yt-dlp
-  (1,858 media sites), Jina Reader, public APIs (HN, Bluesky, arXiv), and a
-  generic WAF-profile-driven fetch chain (curl_cffi TLS impersonation, mobile
-  URL transforms, Playwright real-Chrome) with auto dependency install.
-  Korean triggers: 트위터/X 못 열어, 레딧 안 읽혀, 유튜브 자막 뽑아줘, 깃헙 검색,
-  사이트 차단됨, 스레드 안 열려, 마스토돈, 미디엄, 서브스택, 스택오버플로우,
-  네이버 블로그, 디시인사이드, 에펨코리아, 요즘IT, 긱뉴스, 클리앙, 쿠팡, 링크드인,
-  당근마켓. English triggers: twitter access, reddit blocked, youtube subtitles,
-  github search, arxiv papers, threads, mastodon, medium, substack, stackoverflow,
-  naver blog, dcinside, fmkorea, coupang, linkedin, yozm, wishket.
-  Do NOT trigger for simple web searches that WebSearch can handle directly.
+  Use when you need content from the web — reading a URL, or pulling posts, videos,
+  transcripts or listings from a specific site or platform — before calling WebFetch
+  or curl. Opens blocked/WAF sites automatically. Covers X/Twitter, Reddit, YouTube,
+  GitHub, Mastodon, Medium, Substack, Stack Overflow, Threads, Naver, Coupang,
+  LinkedIn, dcinside, fmkorea, GeekNews, and any platform with bot protection, via
+  yt-dlp (1,858 media sites), Jina Reader, public APIs (HN, Bluesky, arXiv), and a
+  WAF-profile-driven fetch chain (curl_cffi TLS impersonation, mobile URL transforms,
+  Playwright real-Chrome) with auto dependency install.
+  Korean triggers: 레딧/유튜브/네이버 블로그/X/긱뉴스/쿠팡에서 가져와줘, 이 링크 읽어줘,
+  유튜브 자막 뽑아줘, 트위터/X 못 열어, 사이트 차단됨, 스레드 안 열려, 디시인사이드,
+  에펨코리아, 요즘IT, 클리앙, 링크드인, 당근마켓.
+  English triggers: read this link, twitter access, reddit blocked, youtube subtitles,
+  github search, arxiv papers, threads, naver blog, coupang, linkedin.
 ---
 
 <!-- first-run setup: idempotent, non-blocking, self-skips after first run -->
