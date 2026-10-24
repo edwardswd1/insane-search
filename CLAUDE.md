@@ -1,1 +1,0 @@
-Paid art and video go through the Reality Fabricator API: see [.agents/rfab-api.md](./.agents/rfab-api.md). Read it when a job needs real art (pictures, page headers, buttons, loading animations, game assets). The key is in `RFAB_API_KEY` (environment variable or the git-ignored `.env`); never commit it. Never use its phone-call features.
