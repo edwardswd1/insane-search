@@ -1,11 +1,13 @@
 # Reality Fabricator (rfab.ai) API
 
-Paid API for AI-made pictures, video, game art and phone calls, on the repo owner's own account.
+Paid API for AI-made pictures, video and game art, on the repo owner's own account.
+
+**No phone calls.** The owner does not want calls. Never use the phone-call endpoints.
 
 - **Key:** read it from the `RFAB_API_KEY` environment variable (or the git-ignored `.env` at the repo root). Send it as the `X-API-Key` header. Never write the key into a tracked file.
 - **Base URL:** `https://api.rfab.ai`
 - **Full docs:** <https://rfab.ai/llms-full.txt>. Read the part for a job before you start it.
-- **What leaves the machine:** only what you write for a job (a picture or video prompt, or a short brief for a call). Never code, file contents, passwords or private data.
+- **What leaves the machine:** only what you write for a job (a picture or video prompt). Never code, file contents, passwords or private data.
 
 ## When to use it
 
@@ -19,24 +21,6 @@ When a job needs something to look good (art, a page header, buttons, a loading 
 - **Loading animations:** follow "Transparent Looping Animation" in the docs (character on solid green, animate it, key out the green with ffmpeg, loop it as a transparent .webm). Use one for any wait over two seconds.
 - **One look per project:** write a short style paragraph once (characters, palette, art style), keep it in the project, and start every prompt with it.
 
-## Calling the owner when blocked
-
-Only if "Call me when blocked" below is **yes**. Until it is set, do not call.
-
-If you have to stop and wait for something only the owner can do (a login, a payment, a decision only they can make), a short call usually gets an answer in minutes instead of hours.
-
-- First finish everything that does not need the owner. Then make one call for the blocking point (not one per question): `POST /api/phone-calls` with `{ phoneNumber, purpose: "<one line>", context: "<what is blocked, why, exactly what they should do or decide, what you will do after>" }`.
-- Poll `GET /api/phone-calls/:id` every 10 seconds until `status` is `"ended"` or `"failed"`. Calls take minutes; `"ringing"` and `"in-progress"` are normal. Then read `summary`, `actionItems` and `transcript`, and do what the owner said on the call.
-- No answer: keep working on anything that does not need the owner and call again after the wait set below. Stop calling when they tell you to stop.
-- Do not call for things you can work out or look up yourself, and do not call just to report that you finished.
-
-Settings:
-
-- Phone number: not set yet
-- Call me when blocked: not set yet (yes or no)
-- If no answer, call again every: not set yet (15 minutes unless the owner says otherwise)
-- Stop after: not set yet (keep trying unless the owner says otherwise)
-
 ## Cost
 
-Spends tokens from the owner's rfab.ai balance (`GET /api/tokens/balance`; $1 = 50,000 tokens). A picture is a few cents and a call is about 20 cents a minute.
+Spends tokens from the owner's rfab.ai balance (`GET /api/tokens/balance`; $1 = 50,000 tokens). A picture is a few cents.
